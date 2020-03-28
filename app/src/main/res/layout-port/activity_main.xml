@@ -8,12 +8,9 @@
     tools:context=".MainActivity">
 
     <androidx.gridlayout.widget.GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:id="@+id/gridLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:columnCount="7"
         app:layout_constraintBottom_toTopOf="@+id/btnUndo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,432 +20,554 @@
 
         <ImageView
             android:id="@+id/blank4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
             android:tint="@android:color/background_light"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/DownC0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Down"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/DownC1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Down"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/DownC2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Down"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/DownC3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Down"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/DownC4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Down"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/blank2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
             android:tint="@android:color/background_light"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_download" />
 
         <ImageView
             android:id="@+id/RightR0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Right"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <com.example.quixo.Cube
             android:id="@+id/R0C0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R0C1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R0C2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R0C3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R0C4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <ImageView
             android:id="@+id/LeftR0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Left"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
         <ImageView
             android:id="@+id/RightR1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Right"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <com.example.quixo.Cube
             android:id="@+id/R1C0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R1C1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R1C2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R1C3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R1C4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <ImageView
             android:id="@+id/LeftR1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Left"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
         <ImageView
             android:id="@+id/RightR2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Right"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <com.example.quixo.Cube
             android:id="@+id/R2C0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R2C1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R2C2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R2C3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R2C4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <ImageView
             android:id="@+id/LeftR2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Left"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
         <ImageView
             android:id="@+id/RightR3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Right"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <com.example.quixo.Cube
             android:id="@+id/R3C0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R3C1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R3C2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R3C3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R3C4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <ImageView
             android:id="@+id/LeftR3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Left"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
         <ImageView
             android:id="@+id/RightR4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Right"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <com.example.quixo.Cube
             android:id="@+id/R4C0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R4C1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R4C2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R4C3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <com.example.quixo.Cube
             android:id="@+id/R4C4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="cubeSelected"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/ic_delete" />
 
         <ImageView
             android:id="@+id/LeftR4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Left"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="?attr/actionModeCloseDrawable" />
 
         <ImageView
             android:id="@+id/blank3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <ImageView
             android:id="@+id/UpC0"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Up"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <ImageView
             android:id="@+id/UpC1"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Up"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <ImageView
             android:id="@+id/UpC2"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Up"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <ImageView
             android:id="@+id/UpC3"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Up"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <ImageView
             android:id="@+id/UpC4"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:onClick="moveCubes"
+            android:scaleType="fitCenter"
             android:tag="Up"
             android:tint="@android:color/background_dark"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <ImageView
             android:id="@+id/blank"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
             android:visibility="invisible"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
     </androidx.gridlayout.widget.GridLayout>
@@ -457,18 +576,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="179dp"
-        android:layout_marginLeft="179dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="196dp"
-        android:layout_marginRight="196dp"
+        android:layout_marginTop="8dp"
         android:text="Quixo"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="80sp"
+        android:textSize="80dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtPlayer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -476,30 +591,24 @@
         android:id="@+id/txtPlayer"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/allerta_stencil"
         android:gravity="center_horizontal"
         android:text="TextView"
-        android:textSize="30sp"
+        android:textSize="30dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout2"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnUndo"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
         android:text="Undo Last Move"
         app:layout_constraintBottom_toTopOf="@+id/btnRestart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout2" />
 
     <Button
         android:id="@+id/btnRestart"
@@ -509,6 +618,7 @@
         android:text="Restart Game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUndo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
