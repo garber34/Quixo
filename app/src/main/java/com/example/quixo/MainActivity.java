@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,11 +23,16 @@ public class MainActivity extends AppCompatActivity {
     int[][] boardBackupPlayer = new int[5][5];
     Drawable[][] boardBackupDrawables = new Drawable[5][5];
     Cube tappedImageView;
+    Cube tempCube;
+    float originalX;
+    float originalY;
 
     ImageView btnMove1, btnMove2, btnMove3;
     TextView txtPlayer;
     Button btnUndo;
     Button restartGame;
+
+    ViewPropertyAnimator cubeMover;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
         } else if ((currentPlayer == 1 && tappedImageView.getPlayerClaim() == 2) || (currentPlayer == 2 && tappedImageView.getPlayerClaim() == 1)) {
             Toast.makeText(this, "Block already claimed", Toast.LENGTH_SHORT).show();
         } else {
-            tappedImageView.setImageAlpha(156);
+            tappedImageView.setImageAlpha(0);
+            Toast.makeText(this, "X:"+pos[0]+" Y:"+pos[1], Toast.LENGTH_SHORT).show();
             //check if cube is in corner, if so activate 2 opposite buttons
             if (pos[0] == 0 && pos[1] == 0) {
                 btnMove1 = findViewById(R.id.UpC0);
@@ -146,88 +153,56 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void moveCubes(View imageView) {
+    public void moveCubes(final View imageView) {
         backupBoard();
         tappedImageView.setImageAlpha(255);
-        //depending on direction, loop through the cubes transferring image and player number from the previous cube
-        if (imageView.getTag().equals("Up")) {
-            for (int j = pos[0]; j < 4; j++) {
-                board[j][pos[1]].setPlayer(board[j + 1][pos[1]].getPlayerClaim());
-                board[j][pos[1]].setImageDrawable(board[j + 1][pos[1]].getDrawable());
-            }
-            if (currentPlayer == 1) {
-                board[4][pos[1]].setImageResource(R.drawable.o);
-                board[4][pos[1]].setPlayer(1);
-            } else {
-                board[4][pos[1]].setImageResource(R.drawable.x);
-                board[4][pos[1]].setPlayer(2);
-            }
-        } else if (imageView.getTag().equals("Down")) {
-            for (int j = pos[0]; j > 0; j--) {
-                board[j][pos[1]].setPlayer(board[j - 1][pos[1]].getPlayerClaim());
-                board[j][pos[1]].setImageDrawable(board[j - 1][pos[1]].getDrawable());
-            }
-            if (currentPlayer == 1) {
-                board[0][pos[1]].setImageResource(R.drawable.o);
-                board[0][pos[1]].setPlayer(1);
-            } else {
-                board[0][pos[1]].setImageResource(R.drawable.x);
-                board[0][pos[1]].setPlayer(2);
-            }
-        } else if (imageView.getTag().equals("Left")) {
-            for (int j = pos[1]; j < 4; j++) {
-                board[pos[0]][j].setPlayer(board[pos[0]][j + 1].getPlayerClaim());
-                board[pos[0]][j].setImageDrawable(board[pos[0]][j + 1].getDrawable());
-            }
-            if (currentPlayer == 1) {
-                board[pos[0]][4].setImageResource(R.drawable.o);
-                board[pos[0]][4].setPlayer(1);
-            } else {
-                board[pos[0]][4].setImageResource(R.drawable.x);
-                board[pos[0]][4].setPlayer(2);
-            }
+        if (currentPlayer == 1) {
+            tappedImageView.setImageResource(R.drawable.o);
+            tappedImageView.setPlayer(1);
         } else {
-            for (int j = pos[1]; j > 0; j--) {
-                board[pos[0]][j].setPlayer(board[pos[0]][j - 1].getPlayerClaim());
-                board[pos[0]][j].setImageDrawable(board[pos[0]][j - 1].getDrawable());
-            }
-            if (currentPlayer == 1) {
-                board[pos[0]][0].setImageResource(R.drawable.o);
-                board[pos[0]][0].setPlayer(1);
-            } else {
-                board[pos[0]][0].setImageResource(R.drawable.x);
-                board[pos[0]][0].setPlayer(2);
-            }
+            tappedImageView.setImageResource(R.drawable.x);
+            tappedImageView.setPlayer(2);
         }
+       originalX=tappedImageView.getX();
+        originalY=tappedImageView.getY();
+
+        animateMove(tappedImageView, imageView.getX(), imageView.getY());
+
+        cubeMover.withStartAction(new Runnable() {
+            @Override
+            public void run() {
+                setClickable(false);
+            }
+        }).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+
+            final String tag = (String) imageView.getTag();
+            switch (tag){
+                case "Up": animateMove(tappedImageView, board[4][pos[1]].getX(), board[4][pos[1]].getY());
+                            break;
+                case "Down": animateMove(tappedImageView, board[0][pos[1]].getX(),board[0][pos[1]].getY());
+                            break;
+                case "Right": animateMove(tappedImageView, board[pos[0]][0].getX(), board[pos[0]][0].getY());
+                break;
+                case "Left": animateMove(tappedImageView, board[pos[0]][4].getX(), board[pos[0]][4].getY());
+                break;
+            }
+              cubeMover.withEndAction(new Runnable() {
+                  @Override
+                  public void run() {
+                      actualLooping(tag);
+
+                  }
+              }).start();
+
+            }
+        }).start();
+
 
 
 //check for winner, reset the move buttons and change the current player
-        if (checkForWinner(board)) {
 
-            final AlertDialog winnerDialog = new AlertDialog.Builder(this).create();
-            winnerDialog.setTitle("Winner!");
-            winnerDialog.setMessage("Player " + currentPlayer + " wins!");
-            winnerDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Play Again", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            restartGame();
-                            winnerDialog.dismiss();
-                        }
-                    }
-            );
-            winnerDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Exit Game", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    }
-            );
-            winnerDialog.show();
-
-        } else {
-            resetButtons();
-            changePlayer();
-        }
     }
 
     public void resetButtons() {
@@ -314,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
         }
         currentPlayer = 1;
         txtPlayer.setText("Player " + currentPlayer);
+        tappedImageView.setImageAlpha(255);
         backupBoard();
         resetButtons();
     }
@@ -328,6 +304,123 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         }
+    }
+
+    public void animateMove(Cube cubetoMove, float targetX, float targetY){
+
+cubeMover = cubetoMove.animate()
+        .x(targetX)
+        .y(targetY)
+        .setDuration(750);
+
+    }
+
+    public void actualLooping(String tag) {
+        //depending on direction, loop through the cubes transferring image and player number from the previous cube
+        switch (tag) {
+            case "Up":
+                for (int j = pos[0]; j < 4; j++) {
+                    if (j == pos[0]) {
+                        animateMove(board[j + 1][pos[1]], originalX, originalY);
+                        board[0][pos[1]] = findViewById(board[1][pos[1]].getId());
+                        board[0][pos[1]].setPosInGrid(0, pos[1]);
+                    } else {
+                        animateMove(board[j + 1][pos[1]], board[j][pos[1]].getX(), board[j][pos[1]].getY());
+                        board[j][pos[1]] = findViewById(board[j + 1][pos[1]].getId());
+                        board[j][pos[1]].setPosInGrid(j, pos[1]);
+                    }
+
+                }
+                board[4][pos[1]] = findViewById(tappedImageView.getId());
+                board[4][pos[1]].setPosInGrid(4, pos[1]);
+                break;
+            case "Down":
+                for (int j = pos[0]; j > 0; j--) {
+                    if (j == pos[0]) {
+                        animateMove(board[j - 1][pos[1]], originalX, originalY);
+                        board[4][pos[1]] = findViewById(board[3][pos[1]].getId());
+                        board[4][pos[1]].setPosInGrid(4, pos[1]);
+                    } else {
+                        animateMove(board[j - 1][pos[1]], board[j][pos[1]].getX(), board[j][pos[1]].getY());
+                        board[j][pos[1]] = findViewById(board[j - 1][pos[1]].getId());
+                        board[j][pos[1]].setPosInGrid(j, pos[1]);
+                    }
+
+                }
+                board[0][pos[1]] = findViewById(tappedImageView.getId());
+                board[0][pos[1]].setPosInGrid(4, pos[1]);
+                break;
+            case "Left":
+                for (int j = pos[1]; j < 4; j++) {
+                    if (j == pos[1]) {
+                        animateMove(board[pos[0]][j + 1], originalX, originalY);
+                        board[pos[0]][0] = findViewById(board[pos[0]][1].getId());
+                        board[pos[0]][0].setPosInGrid(pos[0], 0);
+                    } else {
+                        animateMove(board[pos[0]][j+1], board[pos[0]][j].getX(), board[pos[0]][j].getY());
+                        board[pos[0]][j] = findViewById(board[pos[0]][j+1].getId());
+                        board[pos[0]][j].setPosInGrid(pos[0], j);
+                    }
+
+                }
+                board[pos[0]][4] = findViewById(tappedImageView.getId());
+                board[pos[0]][4].setPosInGrid(pos[0], 4);
+                break;
+            case "Right":
+                for (int j = pos[1]; j > 0; j--) {
+                    if (j == pos[1]) {
+                        animateMove(board[pos[0]][j - 1], originalX, originalY);
+                        board[pos[0]][4] = findViewById(board[pos[0]][3].getId());
+                        board[pos[0]][4].setPosInGrid(pos[0], 4);
+                    } else {
+                        animateMove(board[pos[0]][j-1], board[pos[0]][j].getX(), board[pos[0]][j].getY());
+                        board[pos[0]][j] = findViewById(board[pos[0]][j-1].getId());
+                        board[pos[0]][j].setPosInGrid(pos[0], j);
+                    }
+
+                }
+                board[pos[0]][0] = findViewById(tappedImageView.getId());
+                board[pos[0]][0].setPosInGrid(pos[0], 0);
+                break;
+        }
+
+
+        setClickable(true);
+        if (checkForWinner(board)) {
+
+            final AlertDialog winnerDialog = new AlertDialog.Builder(MainActivity.this).create();
+            winnerDialog.setTitle("Winner!");
+            winnerDialog.setMessage("Player " + currentPlayer + " wins!");
+            winnerDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Play Again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            restartGame();
+                            winnerDialog.dismiss();
+                        }
+                    }
+            );
+            winnerDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Exit Game", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    }
+            );
+            winnerDialog.show();
+
+        } else {
+            resetButtons();
+            changePlayer();
+        }
+    }
+
+    public void setClickable (boolean bit){
+        for (int j = 0; j < 5; j++) {
+            for (int i = 0; i < 5; i++) {
+                 board[j][i].setClickable(bit);
+            }
+        }
+
     }
 
 }
